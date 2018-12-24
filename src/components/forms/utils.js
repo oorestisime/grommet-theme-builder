@@ -1,17 +1,19 @@
-import React from 'react'
-import _ from 'lodash'
-import { Box, Text} from 'grommet'
+import React from 'react';
+import _ from 'lodash';
+import { Box, Text } from 'grommet';
 import { deepMerge } from 'grommet/utils';
 
-import ParamInput from './ParamInput'
-import SectionInput from './SectionInput'
+import ParamInput from './ParamInput';
+import SectionInput from './SectionInput';
 
-export const inputs = ({ param, paramValue, onChange, section, path: basePath }) => {
+export const inputs = ({
+ param, paramValue, onChange, section, path: basePath,
+}) => {
   let path;
   if (basePath) {
-    path = `${basePath}.${param}`
+    path = `${basePath}.${param}`;
   } else {
-    path = section ? `${section}.${param}` : param
+    path = section ? `${section}.${param}` : param;
   }
 
   if (typeof paramValue === 'string') {
@@ -23,11 +25,11 @@ export const inputs = ({ param, paramValue, onChange, section, path: basePath })
         name={param}
         path={path}
       />
-    )
+    );
   }
 
-  if (Object.keys(paramValue).length === 0 ) {
-    return null
+  if (Object.keys(paramValue).length === 0) {
+    return null;
   }
 
   return (
@@ -38,8 +40,8 @@ export const inputs = ({ param, paramValue, onChange, section, path: basePath })
       section={param}
       path={path}
     />
-  )
-}
+  );
+};
 
 export const Cell = ({ name }) => (
   <Box basis="xsmall" margin={{ bottom: 'medium' }}>
@@ -59,6 +61,6 @@ export const Set = ({ colors }) => (
 );
 
 export const mergeTheme = (base, path, value) => {
-  const params = _.set({}, path, value)
-  return deepMerge(base, params)
-}
+  const params = _.set({}, path, value);
+  return deepMerge(base, params);
+};

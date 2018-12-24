@@ -29,12 +29,15 @@ class ColorInput extends React.Component {
   }
 }
 
-const ColorBuilder = ({ params: colors, onChange }) => (
+export const ColorBuilder = ({ params: colors, onChange }) => (
   <Box>
     {Object.keys(colors).filter(color => typeof colors[color] === 'string').map(color => (
-      <ColorInput onChange={(c, value) => onChange(c, value)} key={color} color={colors[color]} name={color} />
+      <ColorInput
+        onChange={(c, value) => onChange(c, value)}
+        key={color}
+        color={colors[color]}
+        name={color}
+      />
     ))}
   </Box>
 );
-
-export default ColorBuilder;

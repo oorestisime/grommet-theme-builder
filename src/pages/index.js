@@ -12,20 +12,13 @@ import {
 } from 'grommet';
 import { generate } from 'grommet/themes/base';
 import { grommet } from 'grommet/themes';
-import {
-  Paint,
-  Gremlin,
-  Action,
-  Plan,
-  Install,
-  FormClose,
-} from 'grommet-icons';
+import { Gremlin, FormClose } from 'grommet-icons';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
-import { mergeTheme, Set } from '../components/utils';
-import Builder from '../components/Builder';
-import ColorBuilder from '../components/ColorBuilder';
-import BasicForm from '../components/BasicForm';
+import {
+  mergeTheme, Set, Builder, ColorBuilder, BasicForm,
+} from '../components/forms';
+import Sidebar from '../components/Sidebar';
 
 const FullGlobalStyle = createGlobalStyle`
   body { margin: 0; }
@@ -58,18 +51,6 @@ const forms = {
   },
 };
 
-const SideBarButton = ({
- onClick, area, context, Icon,
-}) => (
-  <Button
-    plain
-    label={area}
-    margin={{ vertical: 'small' }}
-    icon={<Icon color="white" />}
-    onClick={() => onClick(area, context)}
-  />
-);
-
 const NotificationLayer = styled(Layer)`
   background-color: rgba(0, 0, 0, 0);
 `;
@@ -87,10 +68,10 @@ class Playground extends React.Component {
 
   closeLayer = () => this.setState({ layer: false });
 
-  onSave = (key, value) => this.setState({
-      theme: mergeTheme(this.state.theme, key, value),
+  onSave = (key, value) => this.setState(state => ({
+      theme: mergeTheme(state.theme, key, value),
       layer: false,
-    });
+    }));
 
   reset = () => this.setState({ theme: generate() });
 
@@ -104,54 +85,12 @@ class Playground extends React.Component {
     } = this.state;
 
     const globalContext = Object.assign({}, theme.global);
-    delete globalContext.colors;
 
     return (
       <Grommet theme={grommet} full>
         <FullGlobalStyle />
         <Box direction="row" fill>
-          <Box
-            fill="vertical"
-            width="small"
-            elevation="medium"
-            background="dark-2"
-            pad={{ vertical: 'medium' }}
-          >
-            <Box
-              border="bottom"
-              gap="xsmall"
-              align="center"
-              margin={{ bottom: 'small' }}
-              pad={{ vertical: 'xsmall' }}
-            >
-              <Gremlin color="white" />
-              <Text size="xsmall">Theme builder</Text>
-            </Box>
-            <SideBarButton
-              Icon={Paint}
-              area="Colors"
-              onClick={this.openLayer}
-              context={theme.global.colors}
-            />
-            <SideBarButton
-              Icon={Install}
-              area="Global"
-              onClick={this.openLayer}
-              context={globalContext}
-            />
-            <SideBarButton
-              Icon={Action}
-              area="Button"
-              onClick={this.openLayer}
-              context={theme.button}
-            />
-            <SideBarButton
-              Icon={Plan}
-              area="Calendar"
-              onClick={this.openLayer}
-              context={theme.calendar}
-            />
-          </Box>
+          <Sidebar callback={this.openLayer} theme={theme} />
           <Box flex fill overflow="auto">
             <Grommet theme={theme}>
               <Box align="center">

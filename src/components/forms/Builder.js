@@ -4,19 +4,19 @@ import {
 } from 'grommet';
 import { mergeTheme } from './utils';
 
-class Builder extends React.Component {
+export class Builder extends React.Component {
   state = {
     ...this.props.params,
   }
 
   onFormChange = (key, value) => {
-    this.setState({ ...mergeTheme(Object.assign({}, this.state), key, value) });
+    this.setState(state => ({ ...mergeTheme(Object.assign({}, state), key, value) }));
   }
 
   render() {
     const {
- Component, themeArea, name, desc, params, onSave, onClose,
-} = this.props;
+      Component, themeArea, name, desc, params, onSave, onClose,
+    } = this.props;
 
     return (
       <Layer
@@ -27,9 +27,17 @@ class Builder extends React.Component {
         onEsc={onClose}
       >
         <Box overflow="scroll" pad="medium" gap="small" width="large">
-          <Box pad={{ bottom: 'medium' }}>
-            <Heading level={3} margin="none">{name}</Heading>
+          <Box flex={false} pad={{ bottom: 'small' }} gap="small">
+            <Heading alignSelf="center" color="brand" level={3} margin="none">{name}</Heading>
             <Text>{desc}</Text>
+            {name !== 'Global' && (
+              <Text size="xsmall">
+                Be aware that some components use theme properties from the global
+                properties so fully styling these components may require modifying
+                that as well. Grommet documentation mentions all the theme properties
+                used in a component.
+              </Text>
+            )}
           </Box>
           <Box
             gap="small"
@@ -55,5 +63,3 @@ class Builder extends React.Component {
     );
   }
 }
-
-export default Builder;

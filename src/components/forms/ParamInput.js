@@ -7,7 +7,13 @@ class ParamInput extends React.Component {
     param: this.props.param,
   }
 
-  shouldComponentUpdate = (nextProps, nextState) => this.state.param !== nextState.param || this.state.param !== nextProps.param
+  shouldComponentUpdate = (nextProps, nextState) => {
+    const { param } = this.state;
+    const { param: nextStateParam } = nextState;
+    const { param: propsParam } = nextProps;
+
+    return param !== nextStateParam || param !== propsParam;
+  }
 
   onChange = (event) => {
     const { onChange, path } = this.props;
