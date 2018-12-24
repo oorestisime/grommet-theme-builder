@@ -9,6 +9,8 @@ import {
   Paragraph,
   Layer,
   Calendar,
+  Anchor,
+  CheckBox,
 } from 'grommet';
 import { generate } from 'grommet/themes/base';
 import { grommet } from 'grommet/themes';
@@ -48,6 +50,18 @@ const forms = {
     desc: 'Modify global properties',
     Component: BasicForm,
     themeArea: 'global',
+  },
+  Anchor: {
+    name: 'Anchor',
+    desc: 'Modify default anchor theme properties',
+    Component: BasicForm,
+    themeArea: 'anchor',
+  },
+  Checkbox: {
+    name: 'Checkbox',
+    desc: 'Modify default checkbox theme properties',
+    Component: BasicForm,
+    themeArea: 'checkbox',
   },
 };
 
@@ -110,7 +124,7 @@ class Playground extends React.Component {
                   <Button margin="small" label="Reset" onClick={this.reset} />
                 </Box>
               </Box>
-              <Box align="start" margin="small" gap="small">
+              <Box align="start" margin="small" gap="medium">
                 <Box direction="row" gap="small">
                   <Set colors={theme.global.colors} />
                 </Box>
@@ -131,6 +145,22 @@ class Playground extends React.Component {
                     onClick={() => {}}
                   />
                   <Button disabled label="Disabled" onClick={() => {}} />
+                </Box>
+                <Box gap="small" direction="row">
+                  <Anchor icon={<Gremlin />} label="Icon Anchor" href="#" />
+                  {['xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'].map(size => (
+                    <Anchor key={size} label={size} size={size} href="#" />
+                  ))}
+                  <Box background="dark-2" pad="small">
+                    <Anchor reverse icon={<Gremlin />} label="Dark themed" href="#" />
+                  </Box>
+                </Box>
+                <Box gap="small" direction="row">
+                  <CheckBox label="Checked" checked />
+                  <CheckBox label="Disabled" disable />
+                  <CheckBox label="Indeterminate" indeterminate />
+                  <CheckBox label="Off toggle" toggle />
+                  <CheckBox label="On toggle" toggle checked />
                 </Box>
                 <Box direction="row-responsive" gap="medium">
                   <Calendar

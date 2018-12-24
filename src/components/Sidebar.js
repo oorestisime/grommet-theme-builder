@@ -11,6 +11,8 @@ import {
   Action,
   Plan,
   Install,
+  Link,
+  CheckboxSelected,
 } from 'grommet-icons';
 
 const SideBarButton = ({
@@ -47,30 +49,44 @@ export default ({ callback, theme }) => {
         <Gremlin color="white" />
         <Text size="xsmall">Theme builder</Text>
       </Box>
-      <SideBarButton
-        Icon={Paint}
-        area="Colors"
-        onClick={callback}
-        context={theme.global.colors}
-      />
-      <SideBarButton
-        Icon={Install}
-        area="Global"
-        onClick={callback}
-        context={globalContext}
-      />
-      <SideBarButton
-        Icon={Action}
-        area="Button"
-        onClick={callback}
-        context={theme.button}
-      />
-      <SideBarButton
-        Icon={Plan}
-        area="Calendar"
-        onClick={callback}
-        context={theme.calendar}
-      />
+      <Box align="start" margin={{ horizontal: 'small' }}>
+        <SideBarButton
+          Icon={Paint}
+          area="Colors"
+          onClick={callback}
+          context={theme.global.colors}
+        />
+        <SideBarButton
+          Icon={Install}
+          area="Global"
+          onClick={callback}
+          context={globalContext}
+        />
+        <SideBarButton
+          Icon={Action}
+          area="Button"
+          onClick={callback}
+          context={theme.button}
+        />
+        <SideBarButton
+          Icon={Link}
+          area="Anchor"
+          onClick={callback}
+          context={theme.anchor}
+        />
+        <SideBarButton
+          Icon={CheckboxSelected}
+          area="Checkbox"
+          onClick={callback}
+          context={theme.checkBox}
+        />
+        <SideBarButton
+          Icon={Plan}
+          area="Calendar"
+          onClick={callback}
+          context={theme.calendar}
+        />
+      </Box>
     </Box>
   );
 };
