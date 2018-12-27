@@ -5114,6 +5114,33 @@ grommet-styles@^0.2.0:
   resolved "https://registry.yarnpkg.com/grommet-styles/-/grommet-styles-0.2.0.tgz#b2eac2b7e2747cb523434d21728ce5234f8ce4f4"
   integrity sha512-0OMSYuGeyifYKpg4Gv2HzL8rUdd0ddnJ5LbCBKgDuloC71XIwr9g/Fxa6rs737MbPV7OZ4pEm4wvrjH4epzf1A==
 
+grommet-theme-aruba@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/grommet-theme-aruba/-/grommet-theme-aruba-0.1.0.tgz#379179c633270fa2117da9e8bcb3c55d047cbafd"
+  integrity sha512-j5dZhtmAXsQI3cCoyRwT9o6FkwY6NX77T4kii7Hmtue6LeVng03RYEQRfIBT/yhVgkd4PDfA7Q5GoeqfIDXD/A==
+
+grommet-theme-dxc@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/grommet-theme-dxc/-/grommet-theme-dxc-0.1.0.tgz#413c73e073ebf9137ff1ef31f04c0b279896a1f0"
+  integrity sha512-7FoKZuZ5NHuTwYXMc0Ax8MQsjf+YJunrernGoj+MCWzLolqEmjrYoekm1C+KwLLxndJsAawDIBIXsQwTOfc36g==
+
+grommet-theme-hp@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/grommet-theme-hp/-/grommet-theme-hp-0.1.0.tgz#061404a47596490ab0667a3b372d908f44eeae9b"
+  integrity sha512-hLgvH2Zl8z1MKYV9WqV9ug/h5xcDl1s1Xogvz/RoLHr09EpnaX2RiItiwI94Q5a6QMIBPcx1WXVH3L2r2c3giw==
+
+grommet-theme-hpe@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/grommet-theme-hpe/-/grommet-theme-hpe-0.4.0.tgz#55e3c3379e08cf0846883be652ae06dff741644d"
+  integrity sha512-J8b3m2nUITm3nk5nRqM2mJXXVmSFi8LsVUDCYaC68ywKMGEwE335OpptbWLCFQ+1tcqWjE7+sTgSjbaPRJ7yyg==
+
+grommet-theme-v1@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/grommet-theme-v1/-/grommet-theme-v1-0.1.0.tgz#5ecb9ffda2deedd10083b964f46845507b96aba0"
+  integrity sha512-mjG7atfZdKz/hDfh3SRWQRAOVIWdpwd4MFz4DhDuVIW3CXUk/BkaRl39OsmjsTgiHQF6ji1zRapNTl2/N+AEIA==
+  dependencies:
+    polished "^2.3.0"
+
 grommet@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/grommet/-/grommet-2.2.1.tgz#f600fe5296342080ab7a218cfb8ff54f19c5ebc6"
@@ -7573,7 +7600,7 @@ pluralize@^7.0.0:
   resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-7.0.0.tgz#298b89df8b93b0221dbf421ad2b1b1ea23fc6777"
   integrity sha512-ARhBOdzS3e41FbkW/XWrTEtukqqLoK5+Z/4UeDaLuSW+39JPeFgs4gCGqsrJHVZX0fUrx//4OF0K1CUGwlIFow==
 
-polished@^2.2.0:
+polished@^2.2.0, polished@^2.3.0:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/polished/-/polished-2.3.1.tgz#557ea07e5bcb1b9c7d71935a01d0315831234d48"
   integrity sha512-0mGyvVrHVRN92wfohriBWmMF4JLEnGgpZbpwPrNDhpB8NrX6lYI8GGWXEfrmrF+ZXg52Jkwd+D0rxViOvXM9RQ==

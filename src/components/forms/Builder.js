@@ -1,8 +1,8 @@
 import React from 'react';
 import {
- Box, Text, Heading, Button, Layer,
+  Box, Text, Heading, Button, Layer,
 } from 'grommet';
-import { mergeTheme } from './utils';
+import { mergeTheme } from '../../utils';
 
 export class Builder extends React.Component {
   state = {

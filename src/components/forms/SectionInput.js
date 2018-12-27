@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Heading } from 'grommet';
-import { inputs } from './utils';
+import { inputs } from '../../utils';
 
 
 const SectionInput = ({

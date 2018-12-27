@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box } from 'grommet';
-import { inputs } from './utils';
+import { inputs } from '../../utils';
 
 export const BasicForm = ({ params, onChange }) => (
   <Box flex={false}>

@@ -5,77 +5,38 @@ import {
   Grommet,
   Button,
   Text,
-  Heading,
-  Paragraph,
   Layer,
-  Calendar,
+  Paragraph,
+  Heading,
+  Select,
   Anchor,
-  CheckBox,
 } from 'grommet';
-import { generate } from 'grommet/themes/base';
 import { grommet } from 'grommet/themes';
-import { Gremlin, FormClose } from 'grommet-icons';
+import { FormClose, Github, Gremlin } from 'grommet-icons';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
-import {
-  mergeTheme, Set, Builder, ColorBuilder, BasicForm,
-} from '../components/forms';
+import { forms, themes } from '../constants';
+import { mergeTheme, Builder } from '../components/forms';
 import Sidebar from '../components/Sidebar';
+import Playground from '../components/Playground';
+
 
 const FullGlobalStyle = createGlobalStyle`
   body { margin: 0; }
 `;
 
-const forms = {
-  Colors: {
-    name: 'Colors',
-    desc: "Modify the theme's colors",
-    Component: ColorBuilder,
-    themeArea: 'global.colors',
-  },
-  Button: {
-    name: 'Button',
-    desc: 'Modify default button theme properties',
-    Component: BasicForm,
-    themeArea: 'button',
-  },
-  Calendar: {
-    name: 'Calendar',
-    desc: 'Modify default calendar theme properties',
-    Component: BasicForm,
-    themeArea: 'calendar',
-  },
-  Global: {
-    name: 'Global',
-    desc: 'Modify global properties',
-    Component: BasicForm,
-    themeArea: 'global',
-  },
-  Anchor: {
-    name: 'Anchor',
-    desc: 'Modify default anchor theme properties',
-    Component: BasicForm,
-    themeArea: 'anchor',
-  },
-  Checkbox: {
-    name: 'Checkbox',
-    desc: 'Modify default checkbox theme properties',
-    Component: BasicForm,
-    themeArea: 'checkbox',
-  },
-};
-
 const NotificationLayer = styled(Layer)`
   background-color: rgba(0, 0, 0, 0);
 `;
 
-class Playground extends React.Component {
+class Index extends React.Component {
   state = {
-    theme: generate(),
+    theme: themes.base,
     layer: false,
     layerForm: '',
     params: {},
     copied: false,
+    selectValue: 'base',
   };
 
   openLayer = (layerForm, params) => this.setState({ layer: true, layerForm, params });
@@ -87,18 +48,23 @@ class Playground extends React.Component {
       layer: false,
     }));
 
-  reset = () => this.setState({ theme: generate() });
+  reset = () => this.setState({ theme: themes.base, selectValue: 'base' });
 
   showNotification = () => this.setState({ copied: true });
 
   hideNotification = () => this.setState({ copied: false });
 
+  changeBaseTheme = ({ option }) => {
+    this.setState({
+      theme: themes[option],
+      selectValue: option,
+    });
+  }
+
   render() {
     const {
-      theme, layer, layerForm, params, copied,
+      theme, layer, layerForm, params, copied, selectValue,
     } = this.state;
-
-    const globalContext = Object.assign({}, theme.global);
 
     return (
       <Grommet theme={grommet} full>
@@ -106,75 +72,37 @@ class Playground extends React.Component {
         <Box direction="row" fill>
           <Sidebar callback={this.openLayer} theme={theme} />
           <Box flex fill overflow="auto">
-            <Grommet theme={theme}>
-              <Box align="center">
-                <Heading level={2}>Welcome to the theme builder</Heading>
-                <Paragraph>
-                  Modifying the sidebar values will enable you to create your
-                  customized theme and then export it!
-                </Paragraph>
-                <Box direction="row">
-                  <CopyToClipboard text={JSON.stringify(theme, null, 2)}>
-                    <Button
-                      margin="small"
-                      label="Copy to clipboard"
-                      onClick={this.showNotification}
-                    />
-                  </CopyToClipboard>
-                  <Button margin="small" label="Reset" onClick={this.reset} />
-                </Box>
+            <Box flex={false} margin={{ bottom: 'large', left: 'small' }}>
+              <Heading level={2}>Welcome to the theme builder</Heading>
+              <Paragraph>
+                Modifying the sidebar values will enable you to create your
+                customized theme and then export it!
+              </Paragraph>
+              <Box direction="row">
+                <Button margin="small" icon={<Gremlin />} href="https://v2.grommet.io/components" label="Grommet documentation" />
+                <Button margin="small" icon={<Github />} href="https://github.com/oorestisime/grommet-theme-builder/issues" label="Report an issue witht the builder" />
               </Box>
-              <Box align="start" margin="small" gap="medium">
-                <Box direction="row" gap="small">
-                  <Set colors={theme.global.colors} />
-                </Box>
-                <Box direction="row" gap="small">
-                  {Object.keys(globalContext.borderSize).map(size => (
-                    <Box pad="small" border={{ size }}>
-                      {size}
-                    </Box>
-                  ))}
-                </Box>
-                <Box gap="small" direction="row">
-                  <Button plain label="Plain button" onClick={() => {}} />
-                  <Button label="Button" onClick={() => {}} />
-                  <Button primary label="Primary button" onClick={() => {}} />
+              <Box direction="row">
+                <CopyToClipboard text={JSON.stringify(theme, null, 2)}>
                   <Button
-                    icon={<Gremlin />}
-                    label="Icon button"
-                    onClick={() => {}}
+                    margin="small"
+                    label="Copy to clipboard"
+                    onClick={this.showNotification}
                   />
-                  <Button disabled label="Disabled" onClick={() => {}} />
-                </Box>
-                <Box gap="small" direction="row">
-                  <Anchor icon={<Gremlin />} label="Icon Anchor" href="#" />
-                  {['xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'].map(size => (
-                    <Anchor key={size} label={size} size={size} href="#" />
-                  ))}
-                  <Box background="dark-2" pad="small">
-                    <Anchor reverse icon={<Gremlin />} label="Dark themed" href="#" />
-                  </Box>
-                </Box>
-                <Box gap="small" direction="row">
-                  <CheckBox label="Checked" checked />
-                  <CheckBox label="Disabled" disable />
-                  <CheckBox label="Indeterminate" indeterminate />
-                  <CheckBox label="Off toggle" toggle />
-                  <CheckBox label="On toggle" toggle checked />
-                </Box>
-                <Box direction="row-responsive" gap="medium">
-                  <Calendar
-                    size="small"
-                    bounds={['2018-09-08', '2018-12-13']}
-                  />
-                  <Calendar
-                    size="medium"
-                    bounds={['2018-09-08', '2018-12-13']}
-                  />
-                </Box>
-                <Calendar size="large" bounds={['2018-09-08', '2018-12-13']} />
+                </CopyToClipboard>
+                <Button margin="small" label="Reset" onClick={this.reset} />
+                <Select
+                  id="select"
+                  name="select"
+                  placeholder="Base theme"
+                  size="small"
+                  value={selectValue}
+                  options={Object.keys(themes)}
+                  onChange={this.changeBaseTheme}
+                />
               </Box>
-            </Grommet>
+            </Box>
+            <Playground theme={theme} />
           </Box>
         </Box>
         {layer && (
@@ -223,4 +151,4 @@ class Playground extends React.Component {
   }
 }
 
-export default Playground;
+export default Index;

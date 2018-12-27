@@ -3,8 +3,8 @@ import _ from 'lodash';
 import { Box, Text } from 'grommet';
 import { deepMerge } from 'grommet/utils';
 
-import ParamInput from './ParamInput';
-import SectionInput from './SectionInput';
+import ParamInput from './components/forms/ParamInput';
+import SectionInput from './components/forms/SectionInput';
 
 export const inputs = ({
  param, paramValue, onChange, section, path: basePath,
