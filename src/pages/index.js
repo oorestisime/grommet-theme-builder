@@ -12,8 +12,9 @@ import { grommet } from 'grommet/themes';
 import { FormClose } from 'grommet-icons';
 
 import { forms, themes } from '../constants';
+import { mergeTheme } from '../utils';
 import {
-  mergeTheme, Builder, Sidebar, Playground, Header,
+  Builder, Sidebar, Playground, Header,
 } from '../components';
 
 const FullGlobalStyle = createGlobalStyle`
@@ -43,7 +44,10 @@ class Index extends React.Component {
       layer: false,
     }));
 
-  reset = () => this.setState({ theme: themes.base, selectValue: 'base' });
+  reset = () => {
+    const { selectValue } = this.theme;
+    this.setState({ theme: themes[selectValue] });
+  };
 
   showNotification = () => this.setState({ copied: true });
 

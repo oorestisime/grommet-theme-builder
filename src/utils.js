@@ -1,6 +1,5 @@
 import React from 'react';
 import _ from 'lodash';
-import { Box, Text } from 'grommet';
 import { deepMerge } from 'grommet/utils';
 
 import ParamInput from './components/forms/ParamInput';
@@ -42,23 +41,6 @@ export const inputs = ({
     />
   );
 };
-
-export const Cell = ({ name }) => (
-  <Box basis="xsmall" margin={{ bottom: 'medium' }}>
-    <Box pad="medium" background={name} round="small" />
-    <Text>
-      <strong>{name}</strong>
-    </Text>
-  </Box>
-);
-
-export const Set = ({ colors }) => (
-  <Box direction="row" wrap gap="medium">
-    {Object.keys(colors).filter(color => typeof colors[color] === 'string').map(color => (
-        <Cell key={color} name={color} />
-      ))}
-  </Box>
-);
 
 export const mergeTheme = (base, path, value) => {
   const params = _.set({}, path, value);

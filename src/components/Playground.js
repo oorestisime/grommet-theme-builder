@@ -6,22 +6,29 @@ import {
   Anchor,
   CheckBox,
   Grommet,
+  Tabs,
+  Tab,
+  Text,
+  Table, TableHeader, TableRow, TableCell, TableBody, TableFooter,
+  DataTable,
 } from 'grommet';
-import { Gremlin } from 'grommet-icons';
+import { Gremlin, CircleInformation, Currency } from 'grommet-icons';
 
-import { Set } from '../utils';
+import {
+  Set, RichTabTitle, table, tableColumns, dataTable, groupColumns, dataTableColumns,
+} from './playground';
 
 const func = () => { };
 
 export const Playground = ({ theme }) => (
   <Grommet theme={theme}>
-    <Box align="start" margin="small" gap="medium">
+    <Box align="start" margin="small" gap="large">
       <Box direction="row" gap="small">
         <Set colors={theme.global.colors} />
       </Box>
       <Box direction="row" gap="small">
         {Object.keys(theme.global.borderSize).map(size => (
-          <Box pad="small" border={{ size }}>
+          <Box key={size} pad="small" border={{ size }}>
             {size}
           </Box>
         ))}
@@ -53,7 +60,65 @@ export const Playground = ({ theme }) => (
         <CheckBox onChange={func} label="Off toggle" toggle />
         <CheckBox onChange={func} label="On toggle" toggle checked />
       </Box>
-      <Box direction="row-responsive" gap="medium">
+      <Box>
+        <Tabs>
+          <Tab
+            title={
+              <RichTabTitle
+                icon={<CircleInformation color="accent-1" />}
+                label="Personal Data"
+              />
+            }
+          />
+          <Tab
+            title={
+              <RichTabTitle icon={<Currency color="light-3" />} label="Payment" />
+            }
+          />
+        </Tabs>
+      </Box>
+      <Table caption="Default Table">
+        <TableHeader>
+          <TableRow>
+            {tableColumns.map(c => (
+              <TableCell key={c.property} scope="col" align={c.align}>
+                <Text>{c.label}</Text>
+              </TableCell>
+            ))}
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {table.map(datum => (
+            <TableRow key={datum.id}>
+              {tableColumns.map(c => (
+                <TableCell key={c.property} scope={c.dataScope} align={c.align}>
+                  <Text>{c.format ? c.format(datum) : datum[c.property]}</Text>
+                </TableCell>
+              ))}
+            </TableRow>
+          ))}
+        </TableBody>
+        <TableFooter>
+          <TableRow>
+            {tableColumns.map(c => (
+              <TableCell key={c.property} align={c.align}>
+                <Text>{c.footer}</Text>
+              </TableCell>
+            ))}
+          </TableRow>
+        </TableFooter>
+      </Table>
+      <DataTable
+        columns={dataTableColumns.map(c => ({
+          ...c,
+          search: c.property === 'name' || c.property === 'location',
+        }))}
+        data={dataTable}
+        sortable
+        resizeable
+      />
+      <DataTable columns={groupColumns} data={dataTable} groupBy="location" sortable />
+      <Box direction="row" gap="medium">
         <Calendar
           size="small"
           bounds={['2018-09-08', '2018-12-13']}
@@ -63,7 +128,6 @@ export const Playground = ({ theme }) => (
           bounds={['2018-09-08', '2018-12-13']}
         />
       </Box>
-      <Calendar size="large" bounds={['2018-09-08', '2018-12-13']} />
     </Box>
   </Grommet>
 );

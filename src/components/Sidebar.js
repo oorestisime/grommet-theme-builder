@@ -13,6 +13,9 @@ import {
   Install,
   Link,
   CheckboxSelected,
+  Columns,
+  Table,
+  Database,
 } from 'grommet-icons';
 
 const SideBarButton = ({
@@ -34,6 +37,7 @@ export const Sidebar = ({ callback, theme }) => {
   return (
     <Box
       fill="vertical"
+      overflow="auto"
       width="small"
       elevation="medium"
       background="dark-2"
@@ -79,6 +83,24 @@ export const Sidebar = ({ callback, theme }) => {
           area="Checkbox"
           onClick={callback}
           context={theme.checkBox}
+        />
+        <SideBarButton
+          Icon={Columns}
+          area="Tabs"
+          onClick={callback}
+          context={theme.tab}
+        />
+        <SideBarButton
+          Icon={Table}
+          area="Table"
+          onClick={callback}
+          context={theme.table}
+        />
+        <SideBarButton
+          Icon={Database}
+          area="DataTable"
+          onClick={callback}
+          context={theme.dataTable}
         />
         <SideBarButton
           Icon={Plan}

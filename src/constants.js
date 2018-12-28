@@ -45,6 +45,24 @@ export const forms = {
     Component: BasicForm,
     themeArea: 'checkbox',
   },
+  Tabs: {
+    name: 'Tabs',
+    desc: 'Modify default tab theme properties',
+    Component: BasicForm,
+    themeArea: 'tab',
+  },
+  Table: {
+    name: 'Table',
+    desc: 'Modify default table theme properties',
+    Component: BasicForm,
+    themeArea: 'table',
+  },
+  DataTable: {
+    name: 'Data.Table',
+    desc: 'Modify default DataTable theme properties',
+    Component: BasicForm,
+    themeArea: 'dataTable',
+  },
 };
 
 const base = generate();
