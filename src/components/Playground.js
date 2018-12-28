@@ -9,11 +9,11 @@ import {
 } from 'grommet';
 import { Gremlin } from 'grommet-icons';
 
-import { Set } from './forms';
+import { Set } from '../utils';
 
 const func = () => { };
 
-export default ({ theme }) => (
+export const Playground = ({ theme }) => (
   <Grommet theme={theme}>
     <Box align="start" margin="small" gap="medium">
       <Box direction="row" gap="small">

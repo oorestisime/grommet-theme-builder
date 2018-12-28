@@ -7,7 +7,7 @@ import ParamInput from './components/forms/ParamInput';
 import SectionInput from './components/forms/SectionInput';
 
 export const inputs = ({
- param, paramValue, onChange, section, path: basePath,
+  param, paramValue, onChange, section, path: basePath,
 }) => {
   let path;
   if (basePath) {

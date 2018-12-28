@@ -27,7 +27,7 @@ const SideBarButton = ({
   />
 );
 
-export default ({ callback, theme }) => {
+export const Sidebar = ({ callback, theme }) => {
   const globalContext = Object.assign({}, theme.global);
   delete globalContext.colors;
 

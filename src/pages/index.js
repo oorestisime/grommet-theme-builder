@@ -1,25 +1,20 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
+import Helmet from 'react-helmet';
 import {
   Box,
   Grommet,
   Button,
   Text,
   Layer,
-  Paragraph,
-  Heading,
-  Select,
-  Anchor,
 } from 'grommet';
 import { grommet } from 'grommet/themes';
-import { FormClose, Github, Gremlin } from 'grommet-icons';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { FormClose } from 'grommet-icons';
 
 import { forms, themes } from '../constants';
-import { mergeTheme, Builder } from '../components/forms';
-import Sidebar from '../components/Sidebar';
-import Playground from '../components/Playground';
-
+import {
+  mergeTheme, Builder, Sidebar, Playground, Header,
+} from '../components';
 
 const FullGlobalStyle = createGlobalStyle`
   body { margin: 0; }
@@ -68,40 +63,27 @@ class Index extends React.Component {
 
     return (
       <Grommet theme={grommet} full>
+        <Helmet>
+          <html lang="en" />
+          <title>Grommet theme builder</title>
+          <link rel="canonical" href="https://grommet-theme-builder.netlify.com" />
+          <meta
+            name="viewport"
+            content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover"
+          />
+        </Helmet>
         <FullGlobalStyle />
         <Box direction="row" fill>
           <Sidebar callback={this.openLayer} theme={theme} />
           <Box flex fill overflow="auto">
-            <Box flex={false} margin={{ bottom: 'large', left: 'small' }}>
-              <Heading level={2}>Welcome to the theme builder</Heading>
-              <Paragraph>
-                Modifying the sidebar values will enable you to create your
-                customized theme and then export it!
-              </Paragraph>
-              <Box direction="row">
-                <Button margin="small" icon={<Gremlin />} href="https://v2.grommet.io/components" label="Grommet documentation" />
-                <Button margin="small" icon={<Github />} href="https://github.com/oorestisime/grommet-theme-builder/issues" label="Report an issue witht the builder" />
-              </Box>
-              <Box direction="row">
-                <CopyToClipboard text={JSON.stringify(theme, null, 2)}>
-                  <Button
-                    margin="small"
-                    label="Copy to clipboard"
-                    onClick={this.showNotification}
-                  />
-                </CopyToClipboard>
-                <Button margin="small" label="Reset" onClick={this.reset} />
-                <Select
-                  id="select"
-                  name="select"
-                  placeholder="Base theme"
-                  size="small"
-                  value={selectValue}
-                  options={Object.keys(themes)}
-                  onChange={this.changeBaseTheme}
-                />
-              </Box>
-            </Box>
+            <Header
+              selectValue={selectValue}
+              theme={theme}
+              showNotification={this.showNotification}
+              reset={this.reset}
+              changeBaseTheme={this.changeBaseTheme}
+              themes={themes}
+            />
             <Playground theme={theme} />
           </Box>
         </Box>
