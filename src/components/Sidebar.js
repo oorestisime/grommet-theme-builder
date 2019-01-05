@@ -16,6 +16,11 @@ import {
   Columns,
   Table,
   Database,
+  TextAlignLeft,
+  Monospace,
+  Radial,
+  FormEdit,
+  Clock,
 } from 'grommet-icons';
 
 const SideBarButton = ({
@@ -67,6 +72,18 @@ export const Sidebar = ({ callback, theme }) => {
           context={globalContext}
         />
         <SideBarButton
+          Icon={Monospace}
+          area="Heading"
+          onClick={callback}
+          context={theme.heading}
+        />
+        <SideBarButton
+          Icon={TextAlignLeft}
+          area="Paragraph"
+          onClick={callback}
+          context={theme.paragraph}
+        />
+        <SideBarButton
           Icon={Action}
           area="Button"
           onClick={callback}
@@ -85,6 +102,18 @@ export const Sidebar = ({ callback, theme }) => {
           context={theme.checkBox}
         />
         <SideBarButton
+          Icon={Radial}
+          area="RadioButton"
+          onClick={callback}
+          context={theme.radioButton}
+        />
+        <SideBarButton
+          Icon={FormEdit}
+          area="FormField"
+          onClick={callback}
+          context={theme.formField}
+        />
+        <SideBarButton
           Icon={Columns}
           area="Tabs"
           onClick={callback}
@@ -101,6 +130,12 @@ export const Sidebar = ({ callback, theme }) => {
           area="DataTable"
           onClick={callback}
           context={theme.dataTable}
+        />
+        <SideBarButton
+          Icon={Clock}
+          area="Clock"
+          onClick={callback}
+          context={theme.clock}
         />
         <SideBarButton
           Icon={Plan}

@@ -58,10 +58,40 @@ export const forms = {
     themeArea: 'table',
   },
   DataTable: {
-    name: 'Data.Table',
+    name: 'DataTable',
     desc: 'Modify default DataTable theme properties',
     Component: BasicForm,
     themeArea: 'dataTable',
+  },
+  FormField: {
+    name: 'FormField',
+    desc: 'Modify default formfield theme properties',
+    Component: BasicForm,
+    themeArea: 'formField',
+  },
+  Heading: {
+    name: 'Heading',
+    desc: 'Modify default heading theme properties',
+    Component: BasicForm,
+    themeArea: 'heading',
+  },
+  Paragraph: {
+    name: 'Paragraph',
+    desc: 'Modify default paragraph theme properties',
+    Component: BasicForm,
+    themeArea: 'paragraph',
+  },
+  RadioButton: {
+    name: 'RadioButton',
+    desc: 'Modify default radiobutton theme properties',
+    Component: BasicForm,
+    themeArea: 'radioButton',
+  },
+  Clock: {
+    name: 'Clock',
+    desc: 'Modify default clock theme properties',
+    Component: BasicForm,
+    themeArea: 'clock',
   },
 };
 

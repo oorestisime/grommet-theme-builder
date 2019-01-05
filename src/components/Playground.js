@@ -11,6 +11,12 @@ import {
   Text,
   Table, TableHeader, TableRow, TableCell, TableBody, TableFooter,
   DataTable,
+  FormField,
+  TextInput,
+  Heading,
+  Paragraph,
+  RadioButton,
+  Clock,
 } from 'grommet';
 import { Gremlin, CircleInformation, Currency } from 'grommet-icons';
 
@@ -32,6 +38,12 @@ export const Playground = ({ theme }) => (
             {size}
           </Box>
         ))}
+      </Box>
+      <Box align="center" gap="medium" direction="row-responsive">
+        {[1, 2, 3, 4].map(level => <Heading level={level}>{`Heading ${level}`}</Heading>)}
+      </Box>
+      <Box align="center" gap="medium" direction="row-responsive">
+        {['small', 'medium', 'large', 'xlarge', 'xxlarge'].map(size => <Paragraph size={size}>{`Paragraph ${size}`}</Paragraph>)}
       </Box>
       <Box gap="small" direction="row">
         <Button plain label="Plain button" onClick={func} />
@@ -59,6 +71,27 @@ export const Playground = ({ theme }) => (
         <CheckBox onChange={func} label="Indeterminate" indeterminate />
         <CheckBox onChange={func} label="Off toggle" toggle />
         <CheckBox onChange={func} label="On toggle" toggle checked />
+      </Box>
+      <Box direction="row" align="center" gap="small">
+        <RadioButton
+          label="Choice 1"
+          name="radio"
+          value="c1"
+          checked
+        />
+        <RadioButton
+          label="Choice 2"
+          name="radio"
+          value="c2"
+        />
+      </Box>
+      <Box direction="row" gap="medium">
+        <FormField label="Label" htmlFor="text-input">
+          <TextInput id="text-input" placeholder="placeholder" />
+        </FormField>
+        <FormField error label="Errored" htmlFor="text-input">
+          <TextInput id="text-input" placeholder="placeholder" />
+        </FormField>
       </Box>
       <Box>
         <Tabs>
@@ -118,6 +151,14 @@ export const Playground = ({ theme }) => (
         resizeable
       />
       <DataTable columns={groupColumns} data={dataTable} groupBy="location" sortable />
+      <Box direction="row" gap="medium">
+        <Clock
+          type="digital"
+        />
+        <Clock
+          type="analog"
+        />
+      </Box>
       <Box direction="row" gap="medium">
         <Calendar
           size="small"
