@@ -29,10 +29,10 @@ const func = () => { };
 export const Playground = ({ theme }) => (
   <Grommet theme={theme}>
     <Box align="start" margin="small" gap="large">
-      <Box direction="row" gap="small">
+      <Box direction="row-responsive" gap="small">
         <Set colors={theme.global.colors} />
       </Box>
-      <Box direction="row" gap="small">
+      <Box direction="row-responsive" gap="small">
         {Object.keys(theme.global.borderSize).map(size => (
           <Box key={size} pad="small" border={{ size }}>
             {size}
@@ -45,7 +45,7 @@ export const Playground = ({ theme }) => (
       <Box align="center" gap="medium" direction="row-responsive">
         {['small', 'medium', 'large', 'xlarge', 'xxlarge'].map(size => <Paragraph size={size}>{`Paragraph ${size}`}</Paragraph>)}
       </Box>
-      <Box gap="small" direction="row">
+      <Box gap="small" direction="row-responsive">
         <Button plain label="Plain button" onClick={func} />
         <Button label="Button" onClick={func} />
         <Button primary label="Primary button" onClick={func} />
@@ -56,7 +56,7 @@ export const Playground = ({ theme }) => (
         />
         <Button disabled label="Disabled" onClick={func} />
       </Box>
-      <Box gap="small" direction="row">
+      <Box gap="small" direction="row-responsive">
         <Anchor icon={<Gremlin />} label="Icon Anchor" href="#" />
         {['xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'].map(size => (
           <Anchor key={size} label={size} size={size} href="#" />
@@ -65,14 +65,14 @@ export const Playground = ({ theme }) => (
           <Anchor reverse icon={<Gremlin />} label="Dark themed" href="#" />
         </Box>
       </Box>
-      <Box gap="small" direction="row">
+      <Box gap="small" direction="row-responsive">
         <CheckBox onChange={func} label="Checked" checked />
         <CheckBox onChange={func} label="Disabled" disable />
         <CheckBox onChange={func} label="Indeterminate" indeterminate />
         <CheckBox onChange={func} label="Off toggle" toggle />
         <CheckBox onChange={func} label="On toggle" toggle checked />
       </Box>
-      <Box direction="row" align="center" gap="small">
+      <Box direction="row-responsive" align="center" gap="small">
         <RadioButton
           label="Choice 1"
           name="radio"
@@ -85,7 +85,7 @@ export const Playground = ({ theme }) => (
           value="c2"
         />
       </Box>
-      <Box direction="row" gap="medium">
+      <Box direction="row-responsive" gap="medium">
         <FormField label="Label" htmlFor="text-input">
           <TextInput id="text-input" placeholder="placeholder" />
         </FormField>
