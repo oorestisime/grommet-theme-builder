@@ -61,13 +61,13 @@ export const sidebar = {
       area: 'FormField',
       context: 'formField',
     },
-  ],
-  Components: [
     {
       Icon: Columns,
       area: 'Tabs',
       context: 'tab',
     },
+  ],
+  Visualizations: [
     {
       Icon: Table,
       area: 'Table',
