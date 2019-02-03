@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react"
 import {
   Box,
   Button,
@@ -9,7 +9,12 @@ import {
   Tabs,
   Tab,
   Text,
-  Table, TableHeader, TableRow, TableCell, TableBody, TableFooter,
+  Table,
+  TableHeader,
+  TableRow,
+  TableCell,
+  TableBody,
+  TableFooter,
   DataTable,
   FormField,
   TextInput,
@@ -17,14 +22,20 @@ import {
   Paragraph,
   RadioButton,
   Clock,
-} from 'grommet';
-import { Gremlin, CircleInformation, Currency } from 'grommet-icons';
+} from "grommet"
+import { Gremlin, CircleInformation, Currency } from "grommet-icons"
 
 import {
-  Set, RichTabTitle, table, tableColumns, dataTable, groupColumns, dataTableColumns,
-} from './playground';
+  Set,
+  RichTabTitle,
+  table,
+  tableColumns,
+  dataTable,
+  groupColumns,
+  dataTableColumns,
+} from "./playground"
 
-const func = () => { };
+const func = () => {}
 
 export const Playground = ({ theme }) => (
   <Grommet theme={theme}>
@@ -40,10 +51,20 @@ export const Playground = ({ theme }) => (
         ))}
       </Box>
       <Box align="center" gap="medium" direction="row-responsive">
-        {[1, 2, 3, 4].map(level => <Heading key={`heading-${level}`} level={level}>{`Heading ${level}`}</Heading>)}
+        {[1, 2, 3, 4].map(level => (
+          <Heading
+            key={`heading-${level}`}
+            level={level}
+          >{`Heading ${level}`}</Heading>
+        ))}
       </Box>
       <Box align="center" gap="medium" direction="row-responsive">
-        {['small', 'medium', 'large', 'xlarge', 'xxlarge'].map(size => <Paragraph key={`paragraph-${size}`} size={size}>{`Paragraph ${size}`}</Paragraph>)}
+        {["small", "medium", "large", "xlarge", "xxlarge"].map(size => (
+          <Paragraph
+            key={`paragraph-${size}`}
+            size={size}
+          >{`Paragraph ${size}`}</Paragraph>
+        ))}
       </Box>
       <Box gap="small" direction="row-responsive">
         <Button key="plain" plain label="Plain button" onClick={func} />
@@ -59,9 +80,11 @@ export const Playground = ({ theme }) => (
       </Box>
       <Box gap="small" direction="row-responsive">
         <Anchor icon={<Gremlin />} label="Icon Anchor" href="#" />
-        {['xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'].map(size => (
-          <Anchor key={size} label={size} size={size} href="#" />
-        ))}
+        {["xsmall", "small", "medium", "large", "xlarge", "xxlarge"].map(
+          size => (
+            <Anchor key={size} label={size} size={size} href="#" />
+          )
+        )}
         <Box background="dark-2" pad="small">
           <Anchor reverse icon={<Gremlin />} label="Dark themed" href="#" />
         </Box>
@@ -81,12 +104,7 @@ export const Playground = ({ theme }) => (
           checked
           onChange={func}
         />
-        <RadioButton
-          label="Choice 2"
-          name="radio"
-          value="c2"
-          onChange={func}
-        />
+        <RadioButton label="Choice 2" name="radio" value="c2" onChange={func} />
       </Box>
       <Box direction="row-responsive" gap="medium">
         <FormField onChange={() => {}} label="Label" htmlFor="text-input">
@@ -108,7 +126,10 @@ export const Playground = ({ theme }) => (
           />
           <Tab
             title={
-              <RichTabTitle icon={<Currency color="light-3" />} label="Payment" />
+              <RichTabTitle
+                icon={<Currency color="light-3" />}
+                label="Payment"
+              />
             }
           />
         </Tabs>
@@ -147,31 +168,26 @@ export const Playground = ({ theme }) => (
       <DataTable
         columns={dataTableColumns.map(c => ({
           ...c,
-          search: c.property === 'name' || c.property === 'location',
+          search: c.property === "name" || c.property === "location",
         }))}
         data={dataTable}
         sortable
         resizeable
       />
-      <DataTable columns={groupColumns} data={dataTable} groupBy="location" sortable />
+      <DataTable
+        columns={groupColumns}
+        data={dataTable}
+        groupBy="location"
+        sortable
+      />
       <Box direction="row" gap="medium">
-        <Clock
-          type="digital"
-        />
-        <Clock
-          type="analog"
-        />
+        <Clock type="digital" />
+        <Clock type="analog" />
       </Box>
       <Box direction="row" gap="medium">
-        <Calendar
-          size="small"
-          bounds={['2018-09-08', '2018-12-13']}
-        />
-        <Calendar
-          size="medium"
-          bounds={['2018-09-08', '2018-12-13']}
-        />
+        <Calendar size="small" bounds={["2018-09-08", "2018-12-13"]} />
+        <Calendar size="medium" bounds={["2018-09-08", "2018-12-13"]} />
       </Box>
     </Box>
   </Grommet>
-);
+)

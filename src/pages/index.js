@@ -18,21 +18,23 @@ class Index extends React.Component {
   state = {
     theme: themes.base,
     layer: false,
-    layerForm: "",
+    layerForm: ``,
     params: {},
     copied: false,
     diffModal: false,
-    selectValue: "base",
+    selectValue: `base`,
   }
 
   openLayer = (layerForm, params) =>
     this.setState({ layer: true, layerForm, params })
 
   onSave = (key, value) =>
-    this.setState(state => ({
-      theme: mergeTheme(state.theme, key, value),
-      layer: false,
-    }))
+    this.setState(state => {
+      return {
+        theme: mergeTheme(state.theme, key, value),
+        layer: false,
+      }
+    })
 
   reset = () => {
     const { selectValue } = this.theme
@@ -81,11 +83,11 @@ class Index extends React.Component {
             <Header
               selectValue={selectValue}
               theme={theme}
-              showNotification={() => this.show("copied")}
+              showNotification={() => this.show(`copied`)}
               reset={this.reset}
               changeBaseTheme={this.changeBaseTheme}
               themes={themes}
-              diff={() => this.show("diffModal")}
+              diff={() => this.show(`diffModal`)}
             />
             <Playground theme={theme} />
           </Box>
@@ -94,7 +96,7 @@ class Index extends React.Component {
           <Builder
             {...forms[layerForm]}
             params={params}
-            onClose={() => this.hide("layer")}
+            onClose={() => this.hide(`layer`)}
             onSave={this.onSave}
           />
         )}
@@ -104,11 +106,11 @@ class Index extends React.Component {
             full="horizontal"
             modal={false}
             responsive={false}
-            onEsc={() => this.hide("copied")}
+            onEsc={() => this.hide(`copied`)}
           >
             <Box
               align="start"
-              pad={{ vertical: "medium", horizontal: "small" }}
+              pad={{ vertical: `medium`, horizontal: `small` }}
             >
               <Box
                 align="center"
@@ -116,7 +118,7 @@ class Index extends React.Component {
                 gap="small"
                 round="medium"
                 elevation="medium"
-                pad={{ vertical: "xsmall", horizontal: "small" }}
+                pad={{ vertical: `xsmall`, horizontal: `small` }}
                 background="status-ok"
               >
                 <Box align="center" direction="row" gap="xsmall">
@@ -124,7 +126,7 @@ class Index extends React.Component {
                 </Box>
                 <Button
                   icon={<FormClose />}
-                  onClick={() => this.hide("copied")}
+                  onClick={() => this.hide(`copied`)}
                   plain
                 />
               </Box>
@@ -133,7 +135,7 @@ class Index extends React.Component {
         )}
         {diffModal && (
           <DiffModal
-            onClose={() => this.hide("diffModal")}
+            onClose={() => this.hide(`diffModal`)}
             data={updatedDiff(themes.base, theme)}
           />
         )}

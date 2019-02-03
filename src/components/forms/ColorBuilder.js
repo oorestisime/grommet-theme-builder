@@ -22,12 +22,12 @@ class ColorInput extends React.Component {
         direction="row"
         gap="small"
         width="large"
-        margin={{ vertical: "medium" }}
+        margin={{ vertical: `medium` }}
       >
         <Text size="medium">{name}</Text>
         <Box
           align="center"
-          pad={{ horizontal: "small", vertical: "small" }}
+          pad={{ horizontal: `small`, vertical: `small` }}
           round="small"
           direction="row"
           border
@@ -48,7 +48,7 @@ class ColorInput extends React.Component {
 export const ColorBuilder = ({ params: colors, onChange }) => (
   <Box>
     {Object.keys(colors)
-      .filter(color => typeof colors[color] === "string")
+      .filter(color => typeof colors[color] === `string`)
       .map(color => (
         <ColorInput
           onChange={(c, value) => onChange(c, value)}

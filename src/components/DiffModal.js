@@ -4,7 +4,7 @@ import { Box, Layer, Heading, Paragraph } from "grommet"
 export const DiffModal = ({ data, onClose }) => (
   <Layer position="center" modal onClickOutside={onClose} onEsc={onClose}>
     <Box align="center" overflow="scroll" pad="medium" gap="small">
-      <Box flex={false} pad={{ bottom: "small" }} gap="small" />
+      <Box flex={false} pad={{ bottom: `small` }} gap="small" />
       <Heading alignSelf="center" color="brand" level={4} margin="none">
         Diff between base theme and current modifications
       </Heading>

@@ -5,7 +5,7 @@
 The theme builder aims to cover the following:
 
 - provide an easy way to test and comprehend the themes
-- provide insights on color picks to create an accessible theme
+- provide insights on color picks to create an accessible theme (Hover on color)
 - present the different theming capabilities
 
 Check it live at https://grommet-theme-builder.netlify.com
