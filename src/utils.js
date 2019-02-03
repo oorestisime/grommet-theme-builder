@@ -1,21 +1,25 @@
-import React from 'react';
-import _ from 'lodash';
-import { deepMerge } from 'grommet/utils';
+import React from "react"
+import _ from "lodash"
+import { deepMerge } from "grommet/utils"
 
-import ParamInput from './components/forms/ParamInput';
-import SectionInput from './components/forms/SectionInput';
+import ParamInput from "./components/forms/ParamInput"
+import SectionInput from "./components/forms/SectionInput"
 
 export const inputs = ({
-  param, paramValue, onChange, section, path: basePath,
+  param,
+  paramValue,
+  onChange,
+  section,
+  path: basePath,
 }) => {
-  let path;
+  let path
   if (basePath) {
-    path = `${basePath}.${param}`;
+    path = `${basePath}.${param}`
   } else {
-    path = section ? `${section}.${param}` : param;
+    path = section ? `${section}.${param}` : param
   }
 
-  if (typeof paramValue === 'string') {
+  if (typeof paramValue === "string") {
     return (
       <ParamInput
         onChange={(key, value) => onChange(key, value)}
@@ -24,11 +28,11 @@ export const inputs = ({
         name={param}
         path={path}
       />
-    );
+    )
   }
 
   if (Object.keys(paramValue).length === 0) {
-    return null;
+    return null
   }
 
   return (
@@ -39,10 +43,10 @@ export const inputs = ({
       section={param}
       path={path}
     />
-  );
-};
+  )
+}
 
 export const mergeTheme = (base, path, value) => {
-  const params = _.set({}, path, value);
-  return deepMerge(base, params);
-};
+  const params = _.set({}, path, value)
+  return deepMerge(base, params)
+}

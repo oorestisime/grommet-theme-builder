@@ -1,8 +1,6 @@
-import React from 'react';
-import {
-  Box, Text, Heading, Button, Layer,
-} from 'grommet';
-import { mergeTheme } from '../../utils';
+import React from "react"
+import { Box, Text, Heading, Button, Layer } from "grommet"
+import { mergeTheme } from "../../utils"
 
 export class Builder extends React.Component {
   state = {
@@ -10,13 +8,21 @@ export class Builder extends React.Component {
   }
 
   onFormChange = (key, value) => {
-    this.setState(state => ({ ...mergeTheme(Object.assign({}, state), key, value) }));
+    this.setState(state => ({
+      ...mergeTheme(Object.assign({}, state), key, value),
+    }))
   }
 
   render() {
     const {
-      Component, themeArea, name, desc, params, onSave, onClose,
-    } = this.props;
+      Component,
+      themeArea,
+      name,
+      desc,
+      params,
+      onSave,
+      onClose,
+    } = this.props
 
     return (
       <Layer
@@ -27,15 +33,17 @@ export class Builder extends React.Component {
         onEsc={onClose}
       >
         <Box overflow="scroll" pad="medium" gap="small" width="large">
-          <Box flex={false} pad={{ bottom: 'small' }} gap="small">
-            <Heading alignSelf="center" color="brand" level={3} margin="none">{name}</Heading>
+          <Box flex={false} pad={{ bottom: "small" }} gap="small">
+            <Heading alignSelf="center" color="brand" level={3} margin="none">
+              {name}
+            </Heading>
             <Text>{desc}</Text>
-            {name !== 'Global' && (
+            {name !== "Global" && (
               <Text size="xsmall">
-                Be aware that some components use theme properties from the global
-                properties so fully styling these components may require modifying
-                that as well. Grommet documentation mentions all the theme properties
-                used in a component.
+                Be aware that some components use theme properties from the
+                global properties so fully styling these components may require
+                modifying that as well. Grommet documentation mentions all the
+                theme properties used in a component.
               </Text>
             )}
           </Box>
@@ -44,12 +52,9 @@ export class Builder extends React.Component {
             direction="row"
             align="center"
             justify="end"
-            margin={{ vertical: 'medium' }}
+            margin={{ vertical: "medium" }}
           >
-            <Button
-              label="Cancel"
-              onClick={onClose}
-            />
+            <Button label="Cancel" onClick={onClose} />
             <Button
               type="submit"
               label="Submit"
@@ -60,6 +65,6 @@ export class Builder extends React.Component {
           <Component onChange={this.onFormChange} params={params} />
         </Box>
       </Layer>
-    );
+    )
   }
 }

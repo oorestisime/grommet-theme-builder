@@ -40,16 +40,17 @@ export const Playground = ({ theme }) => (
         ))}
       </Box>
       <Box align="center" gap="medium" direction="row-responsive">
-        {[1, 2, 3, 4].map(level => <Heading level={level}>{`Heading ${level}`}</Heading>)}
+        {[1, 2, 3, 4].map(level => <Heading key={`heading-${level}`} level={level}>{`Heading ${level}`}</Heading>)}
       </Box>
       <Box align="center" gap="medium" direction="row-responsive">
-        {['small', 'medium', 'large', 'xlarge', 'xxlarge'].map(size => <Paragraph size={size}>{`Paragraph ${size}`}</Paragraph>)}
+        {['small', 'medium', 'large', 'xlarge', 'xxlarge'].map(size => <Paragraph key={`paragraph-${size}`} size={size}>{`Paragraph ${size}`}</Paragraph>)}
       </Box>
       <Box gap="small" direction="row-responsive">
-        <Button plain label="Plain button" onClick={func} />
-        <Button label="Button" onClick={func} />
-        <Button primary label="Primary button" onClick={func} />
+        <Button key="plain" plain label="Plain button" onClick={func} />
+        <Button key="default" label="Button" onClick={func} />
+        <Button key="primary" primary label="Primary button" onClick={func} />
         <Button
+          key="icon"
           icon={<Gremlin />}
           label="Icon button"
           onClick={func}
@@ -78,15 +79,17 @@ export const Playground = ({ theme }) => (
           name="radio"
           value="c1"
           checked
+          onChange={func}
         />
         <RadioButton
           label="Choice 2"
           name="radio"
           value="c2"
+          onChange={func}
         />
       </Box>
       <Box direction="row-responsive" gap="medium">
-        <FormField label="Label" htmlFor="text-input">
+        <FormField onChange={() => {}} label="Label" htmlFor="text-input">
           <TextInput id="text-input" placeholder="placeholder" />
         </FormField>
         <FormField error label="Errored" htmlFor="text-input">

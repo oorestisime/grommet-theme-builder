@@ -1,6 +1,5 @@
-import React from 'react';
-import { Box, Text } from 'grommet';
-
+import React from "react"
+import { Box, Text } from "grommet"
 
 export const RichTabTitle = ({ icon, label }) => (
   <Box direction="row" align="center" gap="xsmall" margin="xsmall">
@@ -9,4 +8,4 @@ export const RichTabTitle = ({ icon, label }) => (
       <strong>{label}</strong>
     </Text>
   </Box>
-);
+)
