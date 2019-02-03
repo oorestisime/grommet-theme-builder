@@ -15,9 +15,9 @@ class Cell extends Component {
 
   getColorInfo = color => {
     const info = []
-    const ratio = (base, color) => Math.round(contrast.ratio(base, color))
-    const score = (base, color) => contrast.score(base, color)
-    const isAccessible = (base, color) => contrast.isAccessible(base, color)
+    const ratio = (base, color) => Math.round(contrast.ratio(color, base))
+    const score = (base, color) => contrast.score(color, base)
+    const isAccessible = (base, color) => contrast.isAccessible(color, base)
     try {
       info.push(
         `White contrast: ${ratio(`white`, color)} ${score(`white`, color)}`
@@ -45,7 +45,7 @@ class Cell extends Component {
   render() {
     const { name, color } = this.props
     const { openDrop } = this.state
-    console.log(color)
+
     return (
       <Box
         ref={this.targetRef}
