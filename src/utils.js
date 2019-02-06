@@ -1,6 +1,7 @@
 import React from "react"
 import _ from "lodash"
 import { deepMerge } from "grommet/utils"
+import contrast from "get-contrast"
 
 import ParamInput from "./components/forms/ParamInput"
 import SectionInput from "./components/forms/SectionInput"
@@ -19,7 +20,7 @@ export const inputs = ({
     path = section ? `${section}.${param}` : param
   }
 
-  if (typeof paramValue === "string") {
+  if (typeof paramValue === `string`) {
     return (
       <ParamInput
         onChange={(key, value) => onChange(key, value)}
@@ -50,3 +51,7 @@ export const mergeTheme = (base, path, value) => {
   const params = _.set({}, path, value)
   return deepMerge(base, params)
 }
+
+export const ratio = (color, base) => Math.round(contrast.ratio(color, base))
+export const score = (color, base) => contrast.score(color, base)
+export const isAccessible = (color, base) => contrast.isAccessible(color, base)

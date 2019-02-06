@@ -1,23 +1,33 @@
 import React from "react"
-import { Box, Button, Paragraph, Heading, Select, Anchor } from "grommet"
+import {
+  Box,
+  Button,
+  Paragraph,
+  Heading,
+  Select,
+  Anchor,
+  CheckBox,
+} from "grommet"
 import { Github, Gremlin } from "grommet-icons"
 import { CopyToClipboard } from "react-copy-to-clipboard"
 
 export const Header = ({
   themes,
-  showNotification,
-  reset,
-  theme,
   changeBaseTheme,
   selectValue,
+  reset,
+  showNotification,
   diff,
+  theme,
+  checked,
+  onChangeToggle,
 }) => (
-  <Box flex={false} margin={{ bottom: "large" }}>
+  <Box flex={false} margin={{ bottom: `large` }}>
     <Box
       direction="row"
       background="light-2"
       elevation="small"
-      pad={{ vertical: "xsmall", left: "small" }}
+      pad={{ vertical: `xsmall`, left: `small` }}
       justify="between"
     >
       <Heading level={3}>Grommet theme builder</Heading>
@@ -53,6 +63,12 @@ export const Header = ({
           />
         </CopyToClipboard>
         <Button color="status-critical" label="Reset" onClick={reset} />
+        <CheckBox
+          label={!checked ? `White text color` : `Black text color`}
+          checked={checked}
+          onChange={onChangeToggle}
+          toggle
+        />
       </Box>
     </Box>
   </Box>

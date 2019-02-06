@@ -12,6 +12,7 @@
     "gatsby-source-filesystem": "^2.0.20",
     "get-contrast": "^2.0.0",
     "grommet": "^2.3.1",
+    "grommet-controls": "^1.1.0",
     "grommet-icons": "^4.1.0",
     "grommet-theme-aruba": "^0.1.0",
     "grommet-theme-dxc": "^0.1.0",

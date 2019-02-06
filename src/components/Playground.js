@@ -37,11 +37,11 @@ import {
 
 const func = () => {}
 
-export const Playground = ({ theme }) => (
+export const Playground = ({ theme, ...layering }) => (
   <Grommet theme={theme}>
     <Box align="start" margin="small" gap="large">
       <Box direction="row-responsive" gap="small">
-        <Set colors={theme.global.colors} />
+        <Set {...layering} colors={theme.global.colors} />
       </Box>
       <Box direction="row-responsive" gap="small">
         {Object.keys(theme.global.borderSize).map(size => (
@@ -59,7 +59,7 @@ export const Playground = ({ theme }) => (
         ))}
       </Box>
       <Box align="center" gap="medium" direction="row-responsive">
-        {["small", "medium", "large", "xlarge", "xxlarge"].map(size => (
+        {[`small`, `medium`, `large`, `xlarge`, `xxlarge`].map(size => (
           <Paragraph
             key={`paragraph-${size}`}
             size={size}
@@ -80,7 +80,7 @@ export const Playground = ({ theme }) => (
       </Box>
       <Box gap="small" direction="row-responsive">
         <Anchor icon={<Gremlin />} label="Icon Anchor" href="#" />
-        {["xsmall", "small", "medium", "large", "xlarge", "xxlarge"].map(
+        {[`xsmall`, `small`, `medium`, `large`, `xlarge`, `xxlarge`].map(
           size => (
             <Anchor key={size} label={size} size={size} href="#" />
           )
@@ -166,10 +166,12 @@ export const Playground = ({ theme }) => (
         </TableFooter>
       </Table>
       <DataTable
-        columns={dataTableColumns.map(c => ({
-          ...c,
-          search: c.property === "name" || c.property === "location",
-        }))}
+        columns={dataTableColumns.map(c => {
+          return {
+            ...c,
+            search: c.property === `name` || c.property === `location`,
+          }
+        })}
         data={dataTable}
         sortable
         resizeable
@@ -185,8 +187,8 @@ export const Playground = ({ theme }) => (
         <Clock type="analog" />
       </Box>
       <Box direction="row" gap="medium">
-        <Calendar size="small" bounds={["2018-09-08", "2018-12-13"]} />
-        <Calendar size="medium" bounds={["2018-09-08", "2018-12-13"]} />
+        <Calendar size="small" bounds={[`2018-09-08`, `2018-12-13`]} />
+        <Calendar size="medium" bounds={[`2018-09-08`, `2018-12-13`]} />
       </Box>
     </Box>
   </Grommet>

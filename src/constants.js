@@ -5,93 +5,100 @@ import { hp } from "grommet-theme-hp"
 import { dxc } from "grommet-theme-dxc"
 import { v1 } from "grommet-theme-v1"
 import { deepMerge } from "grommet/utils"
+import {
+  black,
+  materiallight,
+  materialdark,
+  metro,
+  light,
+} from "grommet-controls/themes"
 
 import { ColorBuilder, BasicForm } from "./components/forms"
 
 export const forms = {
   Colors: {
-    name: "Colors",
-    desc: "Modify the theme's colors",
+    name: `Colors`,
+    desc: `Modify the theme's colors`,
     Component: ColorBuilder,
-    themeArea: "global.colors",
+    themeArea: `global.colors`,
   },
   Button: {
-    name: "Button",
-    desc: "Modify default button theme properties",
+    name: `Button`,
+    desc: `Modify default button theme properties`,
     Component: BasicForm,
-    themeArea: "button",
+    themeArea: `button`,
   },
   Calendar: {
-    name: "Calendar",
-    desc: "Modify default calendar theme properties",
+    name: `Calendar`,
+    desc: `Modify default calendar theme properties`,
     Component: BasicForm,
-    themeArea: "calendar",
+    themeArea: `calendar`,
   },
   Global: {
-    name: "Global",
-    desc: "Modify global properties",
+    name: `Global`,
+    desc: `Modify global properties`,
     Component: BasicForm,
-    themeArea: "global",
+    themeArea: `global`,
   },
   Anchor: {
-    name: "Anchor",
-    desc: "Modify default anchor theme properties",
+    name: `Anchor`,
+    desc: `Modify default anchor theme properties`,
     Component: BasicForm,
-    themeArea: "anchor",
+    themeArea: `anchor`,
   },
   Checkbox: {
-    name: "Checkbox",
-    desc: "Modify default checkbox theme properties",
+    name: `Checkbox`,
+    desc: `Modify default checkbox theme properties`,
     Component: BasicForm,
-    themeArea: "checkbox",
+    themeArea: `checkbox`,
   },
   Tabs: {
-    name: "Tabs",
-    desc: "Modify default tab theme properties",
+    name: `Tabs`,
+    desc: `Modify default tab theme properties`,
     Component: BasicForm,
-    themeArea: "tab",
+    themeArea: `tab`,
   },
   Table: {
-    name: "Table",
-    desc: "Modify default table theme properties",
+    name: `Table`,
+    desc: `Modify default table theme properties`,
     Component: BasicForm,
-    themeArea: "table",
+    themeArea: `table`,
   },
   DataTable: {
-    name: "DataTable",
-    desc: "Modify default DataTable theme properties",
+    name: `DataTable`,
+    desc: `Modify default DataTable theme properties`,
     Component: BasicForm,
-    themeArea: "dataTable",
+    themeArea: `dataTable`,
   },
   FormField: {
-    name: "FormField",
-    desc: "Modify default formfield theme properties",
+    name: `FormField`,
+    desc: `Modify default formfield theme properties`,
     Component: BasicForm,
-    themeArea: "formField",
+    themeArea: `formField`,
   },
   Heading: {
-    name: "Heading",
-    desc: "Modify default heading theme properties",
+    name: `Heading`,
+    desc: `Modify default heading theme properties`,
     Component: BasicForm,
-    themeArea: "heading",
+    themeArea: `heading`,
   },
   Paragraph: {
-    name: "Paragraph",
-    desc: "Modify default paragraph theme properties",
+    name: `Paragraph`,
+    desc: `Modify default paragraph theme properties`,
     Component: BasicForm,
-    themeArea: "paragraph",
+    themeArea: `paragraph`,
   },
   RadioButton: {
-    name: "RadioButton",
-    desc: "Modify default radiobutton theme properties",
+    name: `RadioButton`,
+    desc: `Modify default radiobutton theme properties`,
     Component: BasicForm,
-    themeArea: "radioButton",
+    themeArea: `radioButton`,
   },
   Clock: {
-    name: "Clock",
-    desc: "Modify default clock theme properties",
+    name: `Clock`,
+    desc: `Modify default clock theme properties`,
     Component: BasicForm,
-    themeArea: "clock",
+    themeArea: `clock`,
   },
 }
 
@@ -103,6 +110,11 @@ const hpTheme = deepMerge(base, hp)
 const arubaTheme = deepMerge(base, aruba)
 const dxcTheme = deepMerge(base, dxc)
 const v1Theme = deepMerge(base, v1)
+const materialLight = deepMerge(base, materiallight)
+const materialDark = deepMerge(base, materialdark)
+const blackTheme = deepMerge(base, black)
+const lightTheme = deepMerge(base, light)
+const metroTheme = deepMerge(base, metro)
 
 export const themes = {
   base,
@@ -113,4 +125,9 @@ export const themes = {
   aruba: arubaTheme,
   dxc: dxcTheme,
   v1: v1Theme,
+  black: blackTheme,
+  materialLight,
+  materialDark,
+  metro: metroTheme,
+  light: lightTheme,
 }

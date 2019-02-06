@@ -8,11 +8,15 @@ import { sidebar, SideBarButton, SideBarHeading } from "./sidebar"
 export class Sidebar extends React.Component {
   state = Object.assign(
     {},
-    ...Object.keys(sidebar).map(key => ({ [key]: true }))
+    ...Object.keys(sidebar).map(key => {
+      return { [key]: true }
+    })
   )
 
   toggleSubHeading = title =>
-    this.setState(state => ({ [title]: !state[title] }))
+    this.setState(state => {
+      return { [title]: !state[title] }
+    })
 
   render() {
     const { callback, theme } = this.props
@@ -27,20 +31,20 @@ export class Sidebar extends React.Component {
         width="small"
         elevation="medium"
         background="dark-2"
-        pad={{ vertical: "medium" }}
+        pad={{ vertical: `medium` }}
       >
         <Box
           flex={false}
           gap="xsmall"
           align="center"
-          margin={{ bottom: "medium" }}
+          margin={{ bottom: `medium` }}
         >
           <Gremlin color="white" />
         </Box>
         <Box
           flex={false}
           align="start"
-          margin={{ horizontal: "small", bottom: "small" }}
+          margin={{ horizontal: `small`, bottom: `small` }}
         >
           <SideBarHeading
             key="General"
@@ -65,7 +69,7 @@ export class Sidebar extends React.Component {
             />
           </SideBarHeading>
           {Object.keys(sidebar)
-            .filter(key => key !== "General")
+            .filter(key => key !== `General`)
             .map(head => (
               <SideBarHeading
                 key={head}
@@ -88,6 +92,3 @@ export class Sidebar extends React.Component {
     )
   }
 }
-// <SideBarButton
-//
-//             />
